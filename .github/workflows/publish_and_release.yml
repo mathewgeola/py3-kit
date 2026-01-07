@@ -1,0 +1,60 @@
+name: publish and release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: (actions) checkout
+        uses: actions/checkout@v4
+
+      - name: (actions) setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: (*) pip install poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+
+      - name: (*) poetry --version
+        run: poetry --version
+
+      - name: (actions) cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
+      - name: (*) poetry install
+        run: poetry install --no-interaction --no-root --only main
+
+      - name: (*) poetry build
+        run: |
+          poetry build
+          ls -lh dist/
+
+      - name: (*) poetry publish
+        run: poetry publish
+        env:
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: (actions) action-gh-release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
