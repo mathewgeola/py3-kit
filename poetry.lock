@@ -1417,32 +1417,32 @@ files = [
 
 [[package]]
 name = "py3-execute"
-version = "0.0.4"
+version = "0.0.5"
 description = "python3 execute"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "py3_execute-0.0.4-py3-none-any.whl", hash = "sha256:405dc7532d26cd6be4a27ea749e2ee280d21e338d2366c4a1d75f03c726f8f2e"},
-    {file = "py3_execute-0.0.4.tar.gz", hash = "sha256:d395351fcb05a8a2e0c0c8617c0eed7d95ec93cb96e3bbedb042f44a68ca7f30"},
+    {file = "py3_execute-0.0.5-py3-none-any.whl", hash = "sha256:2a69589139fa3eede5430a184ae3eef0035c2415dab15cca82c3b7012b6de5a3"},
+    {file = "py3_execute-0.0.5.tar.gz", hash = "sha256:4152981f1087325a3b9b5894b5a27f6447c47246b64cfd95fc3b7c983f2fd9be"},
 ]
 
 [package.dependencies]
 mini-racer = ">=0.14.0,<0.15.0"
 orjson = ">=3.11.5,<4.0.0"
-py3-logger = ">=0.0.6,<0.0.7"
+py3-logger = ">=0.0.7,<0.0.8"
 pyexecjs = ">=1.5.1,<2.0.0"
 
 [[package]]
 name = "py3-logger"
-version = "0.0.6"
+version = "0.0.7"
 description = "python3 logger"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "py3_logger-0.0.6-py3-none-any.whl", hash = "sha256:ac94c931cc9c30adc19ec657982d89e6b2112c5b56655858f82a011a9bf96a60"},
-    {file = "py3_logger-0.0.6.tar.gz", hash = "sha256:b7075950e0ed5df57ef89b0059e4ba71ef4304080c2fdc232826b10eede67185"},
+    {file = "py3_logger-0.0.7-py3-none-any.whl", hash = "sha256:6a05ab99772707561aebc100f5f27c0f21b498ffd7b42316e4b24f1b29df2d23"},
+    {file = "py3_logger-0.0.7.tar.gz", hash = "sha256:fc002f1bcc2318a0ca6153d8a77a62ed84b2c34a498b54f19a975f4f1faed736"},
 ]
 
 [package.dependencies]
@@ -1450,14 +1450,14 @@ colorlog = ">=6.10.1,<7.0.0"
 
 [[package]]
 name = "py3-web"
-version = "0.0.4"
+version = "0.0.5"
 description = "python3 web"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "py3_web-0.0.4-py3-none-any.whl", hash = "sha256:3bd7d7fb6dfe044feb7d56bca1eeebc6e4342f102de81f811ba233ad26bea03c"},
-    {file = "py3_web-0.0.4.tar.gz", hash = "sha256:f9836caa313ceb9015ac2243369fabfce89c6715ff34318a6e7b5ce76e88908b"},
+    {file = "py3_web-0.0.5-py3-none-any.whl", hash = "sha256:bb444250febd8182cdfe6cba350061a56ae38ff91f4e7310d6f51c5b26f8b098"},
+    {file = "py3_web-0.0.5.tar.gz", hash = "sha256:d11d0b7206b6d711bbe6e70f650091ba4db14c97db7ebfd0b3f5bed2faa793a4"},
 ]
 
 [package.dependencies]
@@ -1466,8 +1466,8 @@ fake-useragent = ">=2.2.0,<3.0.0"
 furl = ">=2.1.4,<3.0.0"
 htmlmin = ">=0.1.12,<0.2.0"
 httpx = ">=0.28.1,<0.29.0"
-py3-execute = ">=0.0.4,<0.0.5"
-py3-logger = ">=0.0.6,<0.0.7"
+py3-execute = ">=0.0.5,<0.0.6"
+py3-logger = ">=0.0.7,<0.0.8"
 requests = ">=2.32.5,<3.0.0"
 scrapy = ">=2.14.0,<3.0.0"
 
@@ -1831,14 +1831,14 @@ files = [
 
 [[package]]
 name = "urllib3"
-version = "2.6.2"
+version = "2.6.3"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "urllib3-2.6.2-py3-none-any.whl", hash = "sha256:ec21cddfe7724fc7cb4ba4bea7aa8e2ef36f607a4bab81aa6ce42a13dc3f03dd"},
-    {file = "urllib3-2.6.2.tar.gz", hash = "sha256:016f9c98bb7e98085cb2b4b17b87d2c702975664e4f060c6532e64d1c1a5e797"},
+    {file = "urllib3-2.6.3-py3-none-any.whl", hash = "sha256:bf272323e553dfb2e87d9bfd225ca7b0f467b919d7bbd355436d3fd37cb0acd4"},
+    {file = "urllib3-2.6.3.tar.gz", hash = "sha256:1b62b6884944a57dbe321509ab94fd4d3b307075e0c2eae991ac71ee15ad38ed"},
 ]
 
 [package.extras]
@@ -1908,4 +1908,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "43f980542ec1164d67983333766487d980c1d0e4dd80692c3468216b107f4750"
+content-hash = "693c807160d862064b44b8e2109e6ecfc7495c3280d8128642822b371bd79ced"

@@ -1,6 +1,6 @@
 [project]
 name = "py3-kit"
-version = "0.0.3"
+version = "0.0.4"
 description = "python3 kit"
 authors = [
     { name = "mathewgeola", email = "mathewgeola@gmail.com" }
@@ -8,9 +8,9 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "py3-logger (>=0.0.6,<0.0.7)",
-    "py3-execute (>=0.0.4,<0.0.5)",
-    "py3-web (>=0.0.4,<0.0.5)",
+    "py3-logger (>=0.0.7,<0.0.8)",
+    "py3-execute (>=0.0.5,<0.0.6)",
+    "py3-web (>=0.0.5,<0.0.6)",
     "arrow (>=1.4.0,<2.0.0)",
     "opencv-python (>=4.12.0.88,<5.0.0.0)",
     "pillow (>=12.1.0,<13.0.0)",
