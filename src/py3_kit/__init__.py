@@ -10,6 +10,7 @@ from . import assets
 from . import file
 from . import image
 from . import list
+from . import project
 from . import sql
 from . import validators
 
@@ -26,6 +27,7 @@ __all__ = [
     "file",
     "image",
     "list",
+    "project",
     "sql",
     "validators",
 ]

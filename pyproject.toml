@@ -1,6 +1,6 @@
 [project]
 name = "py3-kit"
-version = "0.0.4"
+version = "0.0.5"
 description = "python3 kit"
 authors = [
     { name = "mathewgeola", email = "mathewgeola@gmail.com" }
