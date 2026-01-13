@@ -1661,6 +1661,22 @@ pymysql = ">=1.1.2,<2.0.0"
 redis = ">=7.1.0,<8.0.0"
 
 [[package]]
+name = "py3-downloader"
+version = "0.0.3"
+description = "python3 downloader"
+optional = false
+python-versions = ">=3.12"
+groups = ["main"]
+files = [
+    {file = "py3_downloader-0.0.3-py3-none-any.whl", hash = "sha256:b269e67583b3a1837d2d23ceff8fd40287eb1af563c1232ed2f56766af655772"},
+    {file = "py3_downloader-0.0.3.tar.gz", hash = "sha256:98f0f4df32f2acc2785a447386ee65b59b2ac19ce9db26ee1fde2c0998f9ae53"},
+]
+
+[package.dependencies]
+py3-web = ">=0.0.7,<0.0.8"
+tqdm = ">=4.67.1,<5.0.0"
+
+[[package]]
 name = "py3-execute"
 version = "0.0.5"
 description = "python3 execute"
@@ -2299,6 +2315,28 @@ release = ["build", "twine"]
 testing = ["mypy", "pytest", "pytest-gitignore", "pytest-mock", "responses", "ruff", "syrupy", "tox", "tox-uv", "types-filelock", "types-requests"]
 
 [[package]]
+name = "tqdm"
+version = "4.67.1"
+description = "Fast, Extensible Progress Meter"
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "tqdm-4.67.1-py3-none-any.whl", hash = "sha256:26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2"},
+    {file = "tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+dev = ["nbval", "pytest (>=6)", "pytest-asyncio (>=0.24)", "pytest-cov", "pytest-timeout"]
+discord = ["requests"]
+notebook = ["ipywidgets (>=6)"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
+
+[[package]]
 name = "twisted"
 version = "25.5.0"
 description = "An asynchronous networking framework written in Python"
@@ -2455,4 +2493,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.15"
-content-hash = "789a95fbfe65de830a8e42462f79feb53c8ced3f655505d109f7c03d25c294fa"
+content-hash = "56e82aa8a36d87fa63f53395cec702b78c41b4f473a277033e41465ce6e51042"
