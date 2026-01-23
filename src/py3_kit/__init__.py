@@ -8,12 +8,14 @@ from . import __string as string
 from . import _math as math
 from . import _pandas as pandas
 from . import _types as types
+from . import _wechat_ocr as wechat_ocr
 from . import assets
 from . import file
 from . import image
 from . import list
 from . import pdf
 from . import project
+from . import slide
 from . import sql
 from . import validators
 
@@ -28,12 +30,14 @@ __all__ = [
     "math",
     "pandas",
     "types",
+    "wechat_ocr",
     "assets",
     "file",
     "image",
     "list",
     "pdf",
     "project",
+    "slide",
     "sql",
     "validators",
 ]

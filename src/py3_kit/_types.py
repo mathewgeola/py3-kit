@@ -1,7 +1,9 @@
 from abc import ABCMeta
+from atexit import register
 from collections.abc import ItemsView, KeysView, ValuesView
 from types import new_class
-from typing import NamedTuple, cast
+from typing import NamedTuple, cast, Any
+from typing import TypeVar
 
 import py3_kit
 
@@ -48,3 +50,37 @@ def create_subclasscheck_meta_class(
             )
         })
     ))
+
+
+T = TypeVar("T")
+
+
+def create_auto_call_meta_class(
+        meta_class_name: str = "AutoCallMeta",
+        *,
+        start_function_name: str | None = None,
+        end_function_name: str | None = None,
+) -> type[ABCMeta]:
+    def __call__(cls: type[T], *args: Any, **kwargs: Any) -> T:
+        ins = super(ABCMeta, cls).__call__(*args, **kwargs)
+
+        if start_function_name:
+            if hasattr(ins, start_function_name) and callable((start_function := getattr(ins, start_function_name))):
+                start_function()
+
+        if end_function_name:
+            if hasattr(ins, end_function_name) and callable((end_function := getattr(ins, end_function_name))):
+                register(end_function)
+
+        return ins
+
+    return cast(
+        type[ABCMeta],
+        new_class(
+            meta_class_name,
+            (ABCMeta,),
+            exec_body=lambda ns: ns.update({
+                "__call__": __call__
+            })
+        )
+    )
