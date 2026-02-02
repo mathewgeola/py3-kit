@@ -161,6 +161,8 @@ class Base64Image:
     def _get_ext(suffix: str) -> str | None:
         if suffix.startswith("iVBOR"):
             return "png"
+        if suffix.startswith("UklGR"):
+            return "webp"
         return None
 
     def _init(self) -> None:
