@@ -1,11 +1,15 @@
+import base64
 import os
 from tempfile import NamedTemporaryFile
-from typing import Literal
+from typing import Literal, Self
 
 import cv2
+import httpx
 import numpy as np
 import pillow_avif  # type: ignore
 from PIL import Image
+
+import py3_kit
 
 
 def to_jpg(
@@ -137,3 +141,88 @@ def concat(
 
     except Exception as e:  # noqa
         return False
+
+
+class Base64Image:
+    def __init__(self, data: str):
+        self._data = data
+
+        self._prefix: str
+        self._suffix: str
+        self._ext: str
+
+        self._init()
+
+        self.bytes_image: bytes | None = None
+        self.file_path_image: str | None = None
+        self.url_image: str | None = None
+
+    @staticmethod
+    def _get_ext(suffix: str) -> str | None:
+        if suffix.startswith("iVBOR"):
+            return "png"
+        return None
+
+    def _init(self) -> None:
+        if not "," in self._data:
+            ext = self._get_ext(self._data)
+            assert ext is not None
+            prefix = f"data:image/{ext};base64"
+            self._data = prefix + "," + self._data
+
+        self._prefix, self._suffix = self._data.split(",", maxsplit=1)
+        # self._prefix => data:image/png;base64
+        self._ext = self._prefix.split(";", maxsplit=1)[0].split("/", maxsplit=1)[-1]
+
+    @property
+    def prefix(self) -> str:
+        return self._prefix
+
+    @property
+    def suffix(self) -> str:
+        return self._suffix
+
+    @property
+    def ext(self) -> str:
+        return self._ext
+
+    @property
+    def data(self) -> str:
+        return self._data
+
+    def to_bytes_image(self, image_file_path: str | None = None) -> bytes:
+        bytes_image = base64.b64decode(self._suffix)
+
+        if image_file_path is not None:
+            image_file_path = os.path.abspath(image_file_path)
+            image_dir_path = os.path.dirname(image_file_path)
+            os.makedirs(image_dir_path, exist_ok=True)
+            with open(image_file_path, "wb") as file:
+                file.write(bytes_image)
+
+        return bytes_image
+
+    @classmethod
+    def from_bytes_image(cls, bytes_image: bytes) -> Self:
+        base64_image = base64.b64encode(bytes_image).decode()
+        ins = cls(base64_image)
+        ins.bytes_image = bytes_image
+        return ins
+
+    @classmethod
+    def from_file_path_image(cls, file_path_image: str) -> Self:
+        file_path_image = os.path.abspath(file_path_image)
+        with open(file_path_image, "rb") as f:
+            content = f.read()
+        ins = cls.from_bytes_image(content)
+        ins.file_path_image = file_path_image
+        return ins
+
+    @classmethod
+    def from_url_image(cls, url_image: str) -> Self:
+        headers = py3_kit.py3_web.headers.get_default()
+        response = httpx.get(url_image, headers=headers)
+        content = response.content
+        ins = cls.from_bytes_image(content)
+        ins.url_image = url_image
+        return ins

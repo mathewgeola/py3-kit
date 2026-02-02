@@ -1,0 +1,17 @@
+{
+  "name": "py3-kit",
+  "version": "1.0.0",
+  "description": "python3 kit",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ghost-cursor": "^1.4.2"
+  }
+}

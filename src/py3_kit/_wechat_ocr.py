@@ -1,5 +1,6 @@
 import importlib.util
 import os
+from types import ModuleType
 from typing import Any
 
 import py3_kit
@@ -13,10 +14,10 @@ class WechatOcr:
     ):
         pyd = py3_kit.assets.get_assets_file_path("wcocr.pyd")
         spec = importlib.util.spec_from_file_location("wcocr", pyd)
-        wcocr = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(wcocr)
+        module: ModuleType = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
 
-        self.wcocr = wcocr
+        self.wcocr = module
 
         if wechat_ocr_file_path is None:
             wechat_ocr_file_path = py3_kit.assets.get_assets_file_path("WeChatOCR", "WeChatOCR.exe")
